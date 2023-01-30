@@ -1,7 +1,7 @@
 #  this is scenario : we have two models 'User' and 'Profile' when an instance of User created, we want to create an profile instance automatically.
 #  the  '@reciver' decorator links the sender model to our funtion
 #  'sender' is the object that provokes our function to do something.
-#  
+#  finally we must implement the 'ready' method in app.py file.
 
 #signals.py:
 from django.db.models.signals import post_save, pre_delete
@@ -17,3 +17,6 @@ def create_profile(sender, instance, created, **kwargs):
         
         
  
+#app.py
+def ready(self):
+   import users.signals
